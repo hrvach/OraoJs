@@ -19,7 +19,7 @@ you don't want BASIC to use the entire available memory.
 
 WAV files containing programs / games are located in the wav folder.
 
-You can found the manual 
+You can find the manual in the OraoPy repository.
 
 Try LMEM "DEMO2" and be patient, it loads at the original speed. Additional
 documentation can be found at the Python-based emulator repository, where the
