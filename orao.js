@@ -362,7 +362,7 @@ function orao(screen) {
            0x87DE: [69, 81, 87, 49],     0x87DF: [50,  51],  // [e q w 1]  [2  3]
            0x87EE: [79, 73, 85, 55],     0x87EF: [56,  57],  // [o i u 7]  [8  9]
            0x87F6: [82, 89, 84, 54],     0x87F7: [53,  52],  // [r y t 6]  [5  4]
-           0x87FA: [282, 283, 284, 285], 0x87FD: [13,  17],  // [f1f2f3f4] [cr l_ctrl]
+           0x87FA: [112, 113, 114, 115], 0x87FD: [13,  17],  // [f1f2f3f4] [cr l_ctrl]
            0x87FC: [37, 38, 40, 39],     0x87FB: [32,  16]}  // [arrows]   [spc l_shift]
 
     for (var code in kbd) {
@@ -370,6 +370,8 @@ function orao(screen) {
       if (pos != -1)
         this.memory[code] = down ? (0xFF ^ [16, 32, 64, 128][pos]) : 0xFF; // Samo jedan istovremeno za test
       }
+
+    if (e.keyCode == 27) this.pc = 0xFF89;
 
     e.preventDefault();
     e.stopPropagation();
