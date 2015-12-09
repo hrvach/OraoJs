@@ -17,6 +17,8 @@ Instructions
 Enter BASIC using "BC". When asked about the memory size, press ENTER unless
 you don't want BASIC to use the entire available memory. 
 
+To return to monitor from BASIC, press ESC.
+
 WAV files containing programs / games are located in the wav folder.
 
 Try LMEM "DEMO2" and be patient, it loads at the original speed. Additional
