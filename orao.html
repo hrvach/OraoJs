@@ -1,14 +1,34 @@
 <html>
     <head>
       <title> Orao </title>
+      <link rel="stylesheet" href="css/bijou.min.css">
+      <link rel="stylesheet" href="css/orao.css">
     </head>
     <body unselectable="on">
-        <div style="background: url('telka.png'); width: 950px; height: 814px; margin:auto; overflow:auto; margin-top:50px;">
-          <div style="border-radius:75px; opacity: 0.75; border: 2px solid black; background-color: #404f36; width: 550px; height: 550px; padding: 10px; margin-top:110px; margin-left:120px; ">
-            <canvas id="screen" width="512" height="512" style="width: 512px; height: 512px; margin-left: 20px; margin-top: 20px;">
-            </canvas>
-          </div>
+      <div class='navbar fixed'>
+        <div class='container'>
+          <h4 class='pull-left'>Orao Emulator</h4>
+          <ul class='pull-right'>
+            <li><a href='https://github.com/hrvach/OraoJs'>Github</a></li>
+            <li><a href='http://blog.hrvoje.org/'>Blog</a></li>
+            <li><a href='https://github.com/hrvach/OraoJs/blob/master/README.MD'>Instructions</a></li>
+          </ul>
         </div>
+      </div>
+
+      <div class='grid'>
+             <div class='row'>
+               <div class='span twelve dark'>
+                 <div id="container">
+                   <div id="inner-screen">
+                     <canvas id="screen" width="512" height="512">
+                     </canvas>
+                   </div>
+                 </div>
+               </div>
+               </div>
+
+           <div class='divider'></div>
 
         <script src="rom13.js"> </script>
         <script src="orao.js"> </script>
