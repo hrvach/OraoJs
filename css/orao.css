@@ -27,7 +27,19 @@ body {
   margin-top: 20px;
 }
 .help {
-  margin-right: 50px;
-  color: grey;
-  margin-top: 100px;
+  font-weight: 200;
+  padding-top: 50px;
+}
+
+.divider{
+  width:100%;
+  background:#CCC;
+  height:1px;
+  margin:25px 0;
+}
+
+.explainer{
+  font-weight:200;
+  color:#AAA;
+  margin-bottom:10px;
 }
