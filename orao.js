@@ -45,9 +45,12 @@ function orao(screen) {
 
   this.get_filename = function() {
     var filename = String.fromCharCode.apply(String, this.memory.slice(592,602)).split(" ")[0];
+    if (filename.length < 1) return false;
+
     for (var i=592;i<=602;i++)
         this.memory[i] = 32;            // Omoguci LMEM "" tako da nakon citanja brises ime fajla
 
+    console.log(filename);
     var xhr = new XMLHttpRequest();
     xhr.open('GET', "wav/" + filename + '.WAV', true);
     xhr.responseType = 'arraybuffer';
@@ -55,7 +58,25 @@ function orao(screen) {
     this.tape_ptr++;
 
     var self = this;
+
     xhr.onload = function(e) {
+      if (xhr.status == 404) {
+        var container = document.getElementById("container");
+        container.removeAttribute('class');
+        container.offsetWidth = container.offsetWidth;  // Bez ovog trika "drma" samo jednom :)
+
+        container.className = "shake";
+        self.tape_ptr = 0;
+        self.tape_data = new Array();
+
+        // Simuliraj ctrl+C
+        self.memory[0x87FD] = 223; self.memory[0x877F] = 223;
+        setTimeout(function clear_ctrl_c() {
+          self.memory[0x87FD] = 0xFF; self.memory[0x877F] = 0xFF;
+        }, 500);
+        return;
+      }
+
       var tape = new Uint8Array(this.response);
       for (var c=45;c<=tape.length;c++) {
         self.tape_data.push(tape[c]);
@@ -84,7 +105,12 @@ function orao(screen) {
       if(this.tape_ptr < 1)
         this.get_filename();
 
-      return 255 * (this.tape_data[this.tape_ptr++] > 128);
+      if (this.tape_ptr > this.tape_data.length) {  // Ako smo dosli do kraja kazete
+        this.tape_ptr = 0;
+        this.tape_data = new Array();
+      }
+      else
+        return 255 * (this.tape_data[this.tape_ptr++] > 128);
     }
 
     if (addr == 0x8800) this.speaker();
