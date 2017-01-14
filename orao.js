@@ -436,12 +436,13 @@ tipkovnica.addEventListener('mouseup', function(e){ e.preventDefault(); comp.key
 
 
 function saveEmulatorState(compInstance) {
-  var hiddenSaveTarget = document.createElement('a');
+  var link = document.createElement("a");
+  link.download = 'emulator-state.bin';
+  link.href = "data:application/octet-stream," + encodeURIComponent(JSON.stringify(compInstance));
 
-  hiddenSaveTarget.href = 'data:attachment/binary,' + encodeURI(JSON.stringify(compInstance));
-  hiddenSaveTarget.target = '_blank';
-  hiddenSaveTarget.download = 'emulator-state.bin';
-  hiddenSaveTarget.click();
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
 
