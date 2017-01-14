@@ -1,6 +1,7 @@
 body {
   margin-top: 60px;
 }
+
 #container {
   background:url('../telka.png');
   width: 950px;
@@ -8,6 +9,7 @@ body {
   margin: auto;
   overflow: auto;
 }
+
 #inner-screen {
   border-radius:75px;
   opacity: 0.75;
@@ -19,16 +21,23 @@ body {
   margin-top:110px;
   margin-left:120px;
 }
+
 #screen {
   width: 512px;
   height: 512px;
   margin-left: 20px;
   margin-top: 20px;
 }
+
 .help {
   font-weight: 200;
   font-size: 0.9em;
   text-align: center;
+}
+
+.keyboard {
+  width: 657px;
+  margin: auto;
 }
 
 .shake {

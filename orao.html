@@ -17,7 +17,6 @@
         </div>
       </div>
 
-
       <div class='grid'>
             <div class='row'>
               <div class='span twelve'>
@@ -40,6 +39,92 @@
                  </div>
                </div>
              </div>
+
+             <div class='row'>
+               <div class='span twelve'>
+                 <div class="help">
+                   <ul class='navbar'>
+                     <li><a href='javascript:showHideKeyboard("tipkovnica");'>Virtual keyboard</a></li>
+                     <li><a href='javascript:saveEmulatorState(comp);'>Save emulator state</a></li>
+                     <li><a href='javascript:loadEmulatorState();'>Load emulator state</a></li>
+                   </ul>
+                 </div>
+               </div>
+             </div>
+
+
+             <div class='row'>
+               <div class='span twelve'>
+                 <div class='keyboard'>
+                   <img src="kbd.png" usemap="#mapa-tipkovnica" id="tipkovnica" style="display:none;"/>
+
+                    <map id="mapa-tipkovnica" name="mapa-tipkovnica">
+                      <area shape="rect" alt="1" coords="10,3,46,43" target="49" />
+                      <area shape="rect" alt="2" coords="48,4,84,42" target="50" />
+                      <area shape="rect" alt="3" coords="88,6,122,42" target="51" />
+                      <area shape="rect" alt="4" coords="124,4,158,42" target="52" />
+                      <area shape="rect" alt="5" coords="162,4,196,42" target="53" />
+                      <area shape="rect" alt="6" coords="198,5,237,42" target="54" />
+                      <area shape="rect" alt="7" coords="240,6,273,41" target="55" />
+                      <area shape="rect" alt="8" coords="277,7,313,41" target="56" />
+                      <area shape="rect" alt="9" coords="316,7,349,40" target="57" />
+                      <area shape="rect" alt="0" coords="353,8,387,40" target="48" />
+                      <area shape="rect" alt="=" coords="391,8,425,40" target="189" />
+                      <area shape="rect" alt="+" coords="429,8,463,40" target="192" />
+                      <area shape="rect" alt="*" coords="467,8,500,40" target="187" />
+                      <area shape="rect" alt="?" coords="503,8,535,41" target="8" />
+                      <area shape="rect" alt="q" coords="31,46,65,77" target="81" />
+                      <area shape="rect" alt="w" coords="67,46,101,77" target="87" />
+                      <area shape="rect" alt="e" coords="104,46,138,77" target="69" />
+                      <area shape="rect" alt="r" coords="142,45,177,77" target="82" />
+                      <area shape="rect" alt="t" coords="179,46,215,77" target="84" />
+                      <area shape="rect" alt="z" coords="218,47,251,77" target="89" />
+                      <area shape="rect" alt="u" coords="255,45,291,78" target="85" />
+                      <area shape="rect" alt="i" coords="294,46,330,77" target="73" />
+                      <area shape="rect" alt="o" coords="333,45,366,77" target="79" />
+                      <area shape="rect" alt="p" coords="369,44,405,77" target="80" />
+                      <area shape="rect" alt="š" coords="407,45,442,77" target="219" />
+                      <area shape="rect" alt="đ" coords="445,45,480,77" target="221" />
+                      <area shape="rect" alt="@" coords="483,45,519,77" target="94" />
+                      <area shape="rect" alt="ctl" coords="6,80,38,117" target="17" />
+                      <area shape="rect" alt="a" coords="41,80,73,117" target="65" />
+                      <area shape="rect" alt="s" coords="75,80,111,117" target="83" />
+                      <area shape="rect" alt="d" coords="114,81,147,117" target="68" />
+                      <area shape="rect" alt="f" coords="150,81,188,117" target="70" />
+                      <area shape="rect" alt="g" coords="191,81,227,117" target="71" />
+                      <area shape="rect" alt="h" coords="230,81,265,117" target="72" />
+                      <area shape="rect" alt="j" coords="268,81,302,117" target="74" />
+                      <area shape="rect" alt="k" coords="306,81,339,117" target="75" />
+                      <area shape="rect" alt="l" coords="343,81,377,117" target="76" />
+                      <area shape="rect" alt="č" coords="380,81,415,117" target="186" />
+                      <area shape="rect" alt="ć" coords="418,81,452,118" target="222" />
+                      <area shape="rect" alt="cr" coords="454,82,491,118" target="13" />
+                      <area shape="rect" alt="y" coords="59,120,95,153" target="90" />
+                      <area shape="rect" alt="x" coords="98,119,131,153" target="88" />
+                      <area shape="rect" alt="c" coords="134,119,170,154" target="67" />
+                      <area shape="rect" alt="v" coords="173,119,207,154" target="86" />
+                      <area shape="rect" alt="b" coords="210,119,245,154" target="66" />
+                      <area shape="rect" alt="n" coords="248,119,284,154" target="78" />
+                      <area shape="rect" alt="m" coords="288,119,321,153" target="77" />
+                      <area shape="rect" alt="<" coords="324,119,358,153" target="44" />
+                      <area shape="rect" alt=">" coords="361,120,396,153" target="46" />
+                      <area shape="rect" alt="ž" coords="400,120,434,153" target="220" />
+                      <area shape="rect" alt="lijevo" coords="574,10,610,43" target="37" />
+                      <area shape="rect" alt="gore" coords="612,11,645,43" target="38" />
+                      <area shape="rect" alt="dolje" coords="575,45,610,79" target="40" />
+                      <area shape="rect" alt="desno" coords="612,47,645,79" target="39" />
+                      <area shape="rect" alt="pf1" coords="500,119,532,154" target="112" />
+                      <area shape="rect" alt="pf2" coords="536,119,570,154" target="113" />
+                      <area shape="rect" alt="pf3" coords="573,119,606,153" target="114" />
+                      <area shape="rect" alt="pf4" coords="609,119,643,153" target="115" />
+                      <area shape="rect" alt="space" coords="138,158,437,191" target="32" />
+                    </map>
+
+                  </div>
+               </div>
+             </div>
+
+
       </div>
 
         <script src="rom13.js"> </script>

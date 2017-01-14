@@ -391,17 +391,21 @@ function orao(screen) {
            0x87FA: [112, 113, 114, 115], 0x87FD: [13,  17],  // [f1f2f3f4] [cr l_ctrl]
            0x87FC: [37, 38, 40, 39],     0x87FB: [32,  16]}  // [arrows]   [spc l_shift]
 
+    var keyCode = (typeof(e) != "object") ? parseInt(e) : e.keyCode;
+
     for (var code in kbd) {
-      var pos = kbd[code].indexOf(e.keyCode);
+      var pos = kbd[code].indexOf(keyCode);
       if (pos != -1)
         this.memory[code] = down ? (0xFF ^ [16, 32, 64, 128][pos]) : 0xFF; // Samo jedan istovremeno za test
       }
 
-    if (e.keyCode == 27) this.pc = 0xFF89;
+    if (keyCode == 27) this.pc = 0xFF89;
+
+    if (typeof(e) != "object")
+        return;
 
     e.preventDefault();
     e.stopPropagation();
-
   }
 
   this.step = function() {
@@ -423,6 +427,59 @@ function orao(screen) {
 
 ekran = document.getElementById('screen');
 var comp = new orao(ekran);
+
+tipkovnica = document.getElementById('mapa-tipkovnica');
+
+tipkovnica.addEventListener('click', function(e){ e.preventDefault(); });
+tipkovnica.addEventListener('mousedown', function(e){ e.preventDefault(); comp.keycheck(e.target.target, 1);  });
+tipkovnica.addEventListener('mouseup', function(e){ e.preventDefault(); comp.keycheck(e.target.target, 0);  });
+
+
+function saveEmulatorState(compInstance) {
+  var hiddenSaveTarget = document.createElement('a');
+
+  hiddenSaveTarget.href = 'data:attachment/binary,' + encodeURI(JSON.stringify(compInstance));
+  hiddenSaveTarget.target = '_blank';
+  hiddenSaveTarget.download = 'emulator-state.bin';
+  hiddenSaveTarget.click();
+}
+
+
+function loadEmulatorState() {
+  var fileInput = document.createElement('input');
+  fileInput.setAttribute("type", "file");
+
+  fileInput.addEventListener('change', function(e) {
+    var reader = new FileReader();
+    var file = fileInput.files[0];
+    reader.readAsBinaryString(file);
+
+    reader.onload = function(e) {
+      var saved = JSON.parse(reader.result);
+
+      /* Da iscrta video memoriju upisujemo preko store_byte */
+      for (var i=0; i<65536; i++)
+        comp.store_byte(i, saved.memory[i]);
+
+      for (var property in saved) {
+          if(typeof(saved[property]) == "number")
+              comp[property] = saved[property];
+      }
+
+    }
+
+  });
+
+  fileInput.click();
+}
+
+function showHideKeyboard(id) {
+   var e = document.getElementById(id);
+   if(e.style.display == 'block')
+      e.style.display = 'none';
+   else
+      e.style.display = 'block';
+}
 
 window.addEventListener("keydown", function(e){ comp.keycheck(e, true); }, false);
 window.addEventListener('keyup', function(e){ comp.keycheck(e, false); }, false);
